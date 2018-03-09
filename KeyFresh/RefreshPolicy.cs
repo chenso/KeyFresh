@@ -18,7 +18,7 @@ namespace KeyFresh
 
         public static RefreshPolicy HandleException<TException>(Action action) where TException : Exception
         {
-            return HandleException<TException>(null, action);
+            return HandleException<TException>(x => true, action);
         }
 
         public static RefreshPolicy HandleException<TException>(Func<TException, bool> exceptionPredicate, Action onException)
@@ -33,12 +33,12 @@ namespace KeyFresh
                     }));
         }
 
-        public static RefreshPolicy HandleException<TException>(Func<Task> func) where TException : Exception
+        public static RefreshPolicy AsyncHandleException<TException>(Func<Task> func) where TException : Exception
         {
-            return HandleException<TException>(null, func);
+            return AsyncHandleException<TException>(x => true, func);
         }
 
-        public static RefreshPolicy HandleException<TException>(Func<TException, bool> exceptionPredicate, Func<Task> onException) where TException : Exception
+        public static RefreshPolicy AsyncHandleException<TException>(Func<TException, bool> exceptionPredicate, Func<Task> onException) where TException : Exception
         {
             return new RefreshPolicy(
                 Policy.Handle(exceptionPredicate).RetryAsync(
@@ -63,7 +63,7 @@ namespace KeyFresh
             return _retryPolicy.Execute(action);
         }
 
-        public void Excecute<TResult>(Action action)
+        public void Excecute(Action action)
         {
             _retryPolicy.Execute(action);
         }

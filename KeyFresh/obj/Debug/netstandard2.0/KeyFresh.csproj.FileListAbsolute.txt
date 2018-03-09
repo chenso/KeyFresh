@@ -1,9 +1,9 @@
 c:\Users\Generic\documents\visual studio 2017\Projects\KeyFresh\KeyFresh\bin\Debug\netstandard2.0\KeyFresh.deps.json
 c:\Users\Generic\documents\visual studio 2017\Projects\KeyFresh\KeyFresh\bin\Debug\netstandard2.0\KeyFresh.dll
 c:\Users\Generic\documents\visual studio 2017\Projects\KeyFresh\KeyFresh\bin\Debug\netstandard2.0\KeyFresh.pdb
-c:\Users\Generic\documents\visual studio 2017\Projects\KeyFresh\KeyFresh\obj\Debug\netstandard2.0\KeyFresh.csprojResolveAssemblyReference.cache
 c:\Users\Generic\documents\visual studio 2017\Projects\KeyFresh\KeyFresh\obj\Debug\netstandard2.0\KeyFresh.csproj.CoreCompileInputs.cache
 c:\Users\Generic\documents\visual studio 2017\Projects\KeyFresh\KeyFresh\obj\Debug\netstandard2.0\KeyFresh.AssemblyInfoInputs.cache
 c:\Users\Generic\documents\visual studio 2017\Projects\KeyFresh\KeyFresh\obj\Debug\netstandard2.0\KeyFresh.AssemblyInfo.cs
 c:\Users\Generic\documents\visual studio 2017\Projects\KeyFresh\KeyFresh\obj\Debug\netstandard2.0\KeyFresh.dll
 c:\Users\Generic\documents\visual studio 2017\Projects\KeyFresh\KeyFresh\obj\Debug\netstandard2.0\KeyFresh.pdb
+C:\Users\Generic\Documents\Visual Studio 2017\Projects\KeyFresh\KeyFresh\obj\Debug\netstandard2.0\KeyFresh.csprojResolveAssemblyReference.cache

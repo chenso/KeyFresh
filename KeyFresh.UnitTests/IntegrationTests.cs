@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace KeyFresh.UnitTests
 {
-    public class Tests
+    public class IntegrationTests
     {
-        [Fact]
-        public async void Test1()
+        [Fact(Skip = "Use own keys")]
+        public async void RefreshClient_ExecuteAsync_Retry_Success()
         {
             var refreshKey = new RefreshKey(new Uri("https://google.com"), new KeyVaultMock());
             var blobClientProvider = new BlobClientProvider(refreshKey);

@@ -10,7 +10,7 @@ namespace KeyFresh.UnitTests
     public class CloudBlobRefreshClient : RefreshClient<CloudBlobClient>
     {
         public CloudBlobRefreshClient(IClientProvider<CloudBlobClient> clientProvider) 
-            : base(clientProvider, RefreshPolicy.HandleException<StorageException>(
+            : base(clientProvider, RefreshPolicy.AsyncHandleException<StorageException>(
                 x => x.RequestInformation?.HttpStatusCode == (int) HttpStatusCode.Forbidden,
                 clientProvider.RefreshClientAsync))
         { }
