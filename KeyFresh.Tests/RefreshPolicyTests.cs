@@ -92,7 +92,7 @@ namespace KeyFresh.UnitTests
         public void RefreshPolicy_AsyncHandleException_SynchronousFunc_RetrySuccess()
         {
             var swt = new Switch();
-            RefreshPolicy policy = RefreshPolicy.AsyncHandleException<Exception>(swt.SwitchOnAsync);
+            RefreshPolicy policy = RefreshPolicy.HandleExceptionAsync<Exception>(swt.SwitchOnAsync);
             var success = policy.Excecute(swt.ThrowIfNotOn);
             Assert.True(success);
         }
@@ -101,7 +101,7 @@ namespace KeyFresh.UnitTests
         public void RefreshPolicy_AsyncHandleException_SynchronousAction_NoException()
         {
             var swt = new Switch();
-            RefreshPolicy policy = RefreshPolicy.AsyncHandleException<Exception>(swt.SwitchOnAsync);
+            RefreshPolicy policy = RefreshPolicy.HandleExceptionAsync<Exception>(swt.SwitchOnAsync);
             policy.Excecute(swt.ThrowIfNotOnVoid);
         }
 
@@ -118,7 +118,7 @@ namespace KeyFresh.UnitTests
         public async void RefreshPolicy_AsyncHandleExceptionWithPredicate_AsynchronousFunc_RetrySuccess()
         {
             var swt = new Switch();
-            RefreshPolicy policy = RefreshPolicy.AsyncHandleException<Exception>(x => x.Message == message, swt.SwitchOnAsync);
+            RefreshPolicy policy = RefreshPolicy.HandleExceptionAsync<Exception>(x => x.Message == message, swt.SwitchOnAsync);
             var success = await policy.ExcecuteAsync(swt.ThrowIfNotOnAsync).ConfigureAwait(false);
             Assert.True(success);
         }
@@ -127,7 +127,7 @@ namespace KeyFresh.UnitTests
         public async void RefreshPolicy_AsyncHandleExceptionWithPredicate_AsynchronousAction_RetrySuccess()
         {
             var swt = new Switch();
-            RefreshPolicy policy = RefreshPolicy.AsyncHandleException<Exception>(x => x.Message == message, swt.SwitchOnAsync);
+            RefreshPolicy policy = RefreshPolicy.HandleExceptionAsync<Exception>(x => x.Message == message, swt.SwitchOnAsync);
             await policy.ExcecuteAsync(swt.ThrowArgumentExceptionIfNotOnAsync).ConfigureAwait(false);
         }
 
@@ -135,7 +135,7 @@ namespace KeyFresh.UnitTests
         public void RefreshPolicy_AsyncHandleException_UncaughtException_RetryFail()
         {
             var swt = new Switch();
-            RefreshPolicy policy = RefreshPolicy.AsyncHandleException<ArgumentOutOfRangeException>(swt.SwitchOnAsync);
+            RefreshPolicy policy = RefreshPolicy.HandleExceptionAsync<ArgumentOutOfRangeException>(swt.SwitchOnAsync);
             Assert.ThrowsAsync<ArgumentNullException>(() => policy.ExcecuteAsync(swt.ThrowArgumentNullIfNotOnAsync));
         }
     }

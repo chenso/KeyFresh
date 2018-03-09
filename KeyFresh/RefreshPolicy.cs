@@ -26,7 +26,7 @@ namespace KeyFresh
             return HandleException<TException>(onException, async () => { onException.Invoke(); await Task.FromResult(0); });
         }
 
-        public static RefreshPolicy AsyncHandleException<TException>(Func<Task> onExceptionAsync) where TException : Exception
+        public static RefreshPolicy HandleExceptionAsync<TException>(Func<Task> onExceptionAsync) where TException : Exception
         {
             return HandleException<TException>(() => onExceptionAsync.Invoke(), onExceptionAsync);
         }
@@ -41,7 +41,7 @@ namespace KeyFresh
             return HandleException(exceptionPredicate, onException, async () => { onException.Invoke(); await Task.FromResult(0); });
         }
 
-        public static RefreshPolicy AsyncHandleException<TException>(Func<TException, bool> exceptionPredicate, Func<Task> onExceptionAsync) where TException : Exception
+        public static RefreshPolicy HandleExceptionAsync<TException>(Func<TException, bool> exceptionPredicate, Func<Task> onExceptionAsync) where TException : Exception
         {
             return HandleException(exceptionPredicate, () => onExceptionAsync.Invoke(), onExceptionAsync);
         }
