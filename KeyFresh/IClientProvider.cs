@@ -13,7 +13,7 @@ namespace KeyFresh
     public interface IClientProvider<TClient>
     {
         /// <summary>
-        /// Gets current instance of client
+        /// Gets current instance of client.
         /// </summary>
         /// <returns></returns>
         TClient GetClient();

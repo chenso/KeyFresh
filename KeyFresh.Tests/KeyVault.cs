@@ -9,7 +9,12 @@ namespace KeyFresh.UnitTests
     {
         private int count = 0;
 
-        public SecureString GetKey(Uri keyUri)
+        public SecureString GetSecureKey(Uri keyUri)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetKey(Uri keyUri)
         {
             throw new NotImplementedException();
         }

@@ -37,7 +37,7 @@ namespace KeyFresh.UnitTests
 
         public void RefreshClient()
         {
-            var account = CloudStorageAccount.Parse(_key.GetSecureKey().ConvertToUnsecureString());
+            var account = CloudStorageAccount.Parse(_key.GetKey());
             _client = account.CreateCloudBlobClient();
         }
 

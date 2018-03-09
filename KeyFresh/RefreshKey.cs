@@ -31,6 +31,11 @@ namespace KeyFresh
         /// <returns>SecureString Key</returns>
         public SecureString GetSecureKey()
         {
+            return _keyProvider.GetSecureKey(_keyUri);
+        }
+
+        public string GetKey()
+        {
             return _keyProvider.GetKey(_keyUri);
         }
     }
