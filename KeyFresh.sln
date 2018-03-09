@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyFresh", "KeyFresh\KeyFresh.csproj", "{8411CAF3-314D-4D4E-BD27-91FD2021B6FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyFresh.UnitTests", "KeyFresh.UnitTests\KeyFresh.UnitTests.csproj", "{9DA33113-FF4E-480B-ACAF-C7163E9289FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyFresh.Tests", "KeyFresh.UnitTests\KeyFresh.Tests.csproj", "{9DA33113-FF4E-480B-ACAF-C7163E9289FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
