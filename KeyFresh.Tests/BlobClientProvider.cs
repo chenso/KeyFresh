@@ -12,6 +12,7 @@ namespace KeyFresh.UnitTests
     {
         private volatile CloudBlobClient _client;
         private object clientLock = new object();
+        private object refreshLock = new object();
 
         private RefreshKey _key;
 
@@ -37,8 +38,11 @@ namespace KeyFresh.UnitTests
 
         public void RefreshClient()
         {
-            var account = CloudStorageAccount.Parse(_key.GetKey());
-            _client = account.CreateCloudBlobClient();
+            lock(refreshLock)
+            {
+                var account = CloudStorageAccount.Parse(_key.GetKey());
+                _client = account.CreateCloudBlobClient();
+            }
         }
 
         public Task RefreshClientAsync()

@@ -8,7 +8,7 @@ namespace KeyFresh
     /// <summary>
     /// Provides a refreshable instance of a client
     /// </summary>
-    /// <remarks></remarks>
+    /// <remarks>Implementations must be thread-safe</remarks>
     /// <typeparam name="TClient"></typeparam>
     public interface IClientProvider<TClient>
     {
