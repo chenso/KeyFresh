@@ -11,8 +11,8 @@ namespace KeyFresh
     /// <typeparam name="TClient">Client type to wrap</typeparam>
     public abstract class RefreshClient<TClient>
     {
-        protected IClientProvider<TClient> ClientProvider;
-        protected RefreshPolicy RefreshHandler;
+        protected readonly IClientProvider<TClient> ClientProvider;
+        protected readonly RefreshPolicy RefreshHandler;
 
         /// <summary>
         /// Creates a refreshable client wrapper

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace KeyFresh
 {
-    public static class StringExtensions
+    internal static class StringExtensions
     {
         public static SecureString ConvertToSecureString(this string unsecureString)
         {

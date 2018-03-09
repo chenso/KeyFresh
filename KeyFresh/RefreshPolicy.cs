@@ -10,10 +10,10 @@ namespace KeyFresh
     /// <summary>
     /// Refresh policy definition for actions to take on exception before a retry 
     /// </summary>
-    public class RefreshPolicy
+    public sealed class RefreshPolicy
     {
-        private RetryPolicy _retryPolicy;
-        private RetryPolicy _asyncRetryPolicy;
+        private readonly RetryPolicy _retryPolicy;
+        private readonly RetryPolicy _asyncRetryPolicy;
 
         private RefreshPolicy(RetryPolicy retryPolicy, RetryPolicy asyncRetryPolicy)
         {
