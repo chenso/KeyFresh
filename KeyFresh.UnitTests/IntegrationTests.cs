@@ -8,7 +8,7 @@ namespace KeyFresh.UnitTests
 {
     public class IntegrationTests
     {
-        [Fact(Skip = "Use own keys")]
+        [Fact(Skip = "Define own keyvault")]
         public async void RefreshClient_ExecuteAsync_Retry_Success()
         {
             var refreshKey = new RefreshKey(new Uri("https://google.com"), new KeyVaultMock());

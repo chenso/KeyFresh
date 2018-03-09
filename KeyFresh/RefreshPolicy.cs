@@ -10,18 +10,40 @@ namespace KeyFresh
     public class RefreshPolicy
     {
         private RetryPolicy _retryPolicy;
+        private RetryPolicy _asyncRetryPolicy;
 
-        private RefreshPolicy(RetryPolicy retryPolicy)
+        private RefreshPolicy(RetryPolicy retryPolicy, RetryPolicy asyncRetryPolicy)
         {
             _retryPolicy = retryPolicy;
+            _asyncRetryPolicy = asyncRetryPolicy;
         }
 
-        public static RefreshPolicy HandleException<TException>(Action action) where TException : Exception
+        public static RefreshPolicy HandleException<TException>(Action onException) where TException : Exception
         {
-            return HandleException<TException>(x => true, action);
+            return HandleException<TException>(onException, async () => { onException.Invoke(); await Task.FromResult(0); });
         }
 
-        public static RefreshPolicy HandleException<TException>(Func<TException, bool> exceptionPredicate, Action onException)
+        public static RefreshPolicy AsyncHandleException<TException>(Func<Task> onExceptionAsync) where TException : Exception
+        {
+            return HandleException<TException>(() => onExceptionAsync.Invoke(), onExceptionAsync);
+        }
+
+        public static RefreshPolicy HandleException<TException>(Action onException, Func<Task> onExceptionAsync) where TException : Exception
+        {
+            return HandleException<TException>(x => true, onException, onExceptionAsync);
+        }
+
+        public static RefreshPolicy HandleException<TException>(Func<TException, bool> exceptionPredicate, Action onException) where TException : Exception
+        {
+            return HandleException(exceptionPredicate, onException, async () => { onException.Invoke(); await Task.FromResult(0); });
+        }
+
+        public static RefreshPolicy AsyncHandleException<TException>(Func<TException, bool> exceptionPredicate, Func<Task> onExceptionAsync) where TException : Exception
+        {
+            return HandleException(exceptionPredicate, () => onExceptionAsync.Invoke(), onExceptionAsync);
+        }
+
+        public static RefreshPolicy HandleException<TException>(Func<TException, bool> exceptionPredicate, Action onException, Func<Task> onExceptionAsync)
             where TException : Exception
         {
             return new RefreshPolicy(
@@ -30,32 +52,22 @@ namespace KeyFresh
                     (_, __) =>
                     {
                         onException();
-                    }));
-        }
-
-        public static RefreshPolicy AsyncHandleException<TException>(Func<Task> func) where TException : Exception
-        {
-            return AsyncHandleException<TException>(x => true, func);
-        }
-
-        public static RefreshPolicy AsyncHandleException<TException>(Func<TException, bool> exceptionPredicate, Func<Task> onException) where TException : Exception
-        {
-            return new RefreshPolicy(
-                Policy.Handle(exceptionPredicate).RetryAsync(
-                    1, 
+                    }),
+                 Policy.Handle(exceptionPredicate).RetryAsync(
+                    1,
                     async (_, __) => {
-                        await onException().ConfigureAwait(false);
+                        await onExceptionAsync().ConfigureAwait(false);
                     }));
         }
 
         public Task<TResult> ExcecuteAsync<TResult>(Func<Task<TResult>> action)
         {
-            return _retryPolicy.ExecuteAsync(action);
+            return _asyncRetryPolicy.ExecuteAsync(action);
         }
 
         public Task ExcecuteAsync(Func<Task> action)
         {
-            return _retryPolicy.ExecuteAsync(action);
+            return _asyncRetryPolicy.ExecuteAsync(action);
         }
 
         public TResult Excecute<TResult>(Func<TResult> action)

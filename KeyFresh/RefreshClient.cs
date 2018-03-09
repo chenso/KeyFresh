@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace KeyFresh
 {
-    public class RefreshClient<TClient>
+    public abstract class RefreshClient<TClient>
     {
         protected IClientProvider<TClient> ClientProvider;
         protected RefreshPolicy RefreshHandler;
