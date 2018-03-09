@@ -39,7 +39,8 @@ namespace KeyFresh.UnitTests
 
         public void RefreshClient()
         {
-            if (Monitor.TryEnter(refreshLock)) {
+            if (Monitor.TryEnter(refreshLock))
+            {
                 try
                 {
                     var account = CloudStorageAccount.Parse(_key.GetKey());
@@ -49,6 +50,11 @@ namespace KeyFresh.UnitTests
                 {
                     Monitor.Exit(refreshLock);
                 }
+            }
+            else
+            {
+                // Wait until lock is released - client is refreshed, then no-op
+                lock (refreshLock) { }
             }
         }
 
