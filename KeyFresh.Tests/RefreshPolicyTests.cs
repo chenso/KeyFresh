@@ -64,7 +64,7 @@ namespace KeyFresh.UnitTests
                 {
                     throw new ArgumentException(message);
                 }
-                return Task.FromResult(0);
+                return Task.CompletedTask;
             }
 
             public void SwitchOn()
@@ -75,7 +75,7 @@ namespace KeyFresh.UnitTests
             public Task SwitchOnAsync()
             {
                 on = true;
-                return Task.FromResult(0);
+                return Task.CompletedTask;
             }
         }
 

@@ -61,7 +61,7 @@ namespace KeyFresh.UnitTests
         public Task RefreshClientAsync()
         {
             RefreshClient();
-            return Task.FromResult(0);
+            return Task.CompletedTask;
         }
     }
 }

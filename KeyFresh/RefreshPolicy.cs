@@ -23,7 +23,7 @@ namespace KeyFresh
 
         public static RefreshPolicy HandleException<TException>(Action onException) where TException : Exception
         {
-            return HandleException<TException>(onException, async () => { onException.Invoke(); await Task.FromResult(0); });
+            return HandleException<TException>(onException, () => { onException.Invoke(); return Task.CompletedTask; });
         }
 
         public static RefreshPolicy HandleExceptionAsync<TException>(Func<Task> onExceptionAsync) where TException : Exception
