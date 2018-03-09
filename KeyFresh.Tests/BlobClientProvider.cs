@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Storage.Blob;
 using KeyFresh;
 using Microsoft.WindowsAzure.Storage;
+using System.Threading;
 
 namespace KeyFresh.UnitTests
 {
@@ -38,10 +39,16 @@ namespace KeyFresh.UnitTests
 
         public void RefreshClient()
         {
-            lock(refreshLock)
-            {
-                var account = CloudStorageAccount.Parse(_key.GetKey());
-                _client = account.CreateCloudBlobClient();
+            if (Monitor.TryEnter(refreshLock)) {
+                try
+                {
+                    var account = CloudStorageAccount.Parse(_key.GetKey());
+                    _client = account.CreateCloudBlobClient();
+                }
+                finally
+                {
+                    Monitor.Exit(refreshLock);
+                }
             }
         }
 
