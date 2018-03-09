@@ -26,9 +26,9 @@ namespace KeyFresh
         }
 
         /// <summary>
-        /// 
+        /// Gets SecureString key at key's uri
         /// </summary>
-        /// <returns></returns>
+        /// <returns>SecureString Key</returns>
         public SecureString GetSecureKey()
         {
             return _keyProvider.GetKey(_keyUri);

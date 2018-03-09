@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyFresh", "KeyFresh\KeyFresh.csproj", "{8411CAF3-314D-4D4E-BD27-91FD2021B6FE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyFresh.Tests", "KeyFresh.UnitTests\KeyFresh.Tests.csproj", "{9DA33113-FF4E-480B-ACAF-C7163E9289FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyFresh.Tests", "KeyFresh.Tests\KeyFresh.Tests.csproj", "{0157E488-2A88-45F1-B073-5E707FC535BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{8411CAF3-314D-4D4E-BD27-91FD2021B6FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8411CAF3-314D-4D4E-BD27-91FD2021B6FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8411CAF3-314D-4D4E-BD27-91FD2021B6FE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9DA33113-FF4E-480B-ACAF-C7163E9289FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9DA33113-FF4E-480B-ACAF-C7163E9289FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9DA33113-FF4E-480B-ACAF-C7163E9289FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9DA33113-FF4E-480B-ACAF-C7163E9289FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0157E488-2A88-45F1-B073-5E707FC535BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0157E488-2A88-45F1-B073-5E707FC535BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0157E488-2A88-45F1-B073-5E707FC535BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0157E488-2A88-45F1-B073-5E707FC535BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

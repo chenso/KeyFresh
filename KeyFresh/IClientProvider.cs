@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace KeyFresh
 {
     /// <summary>
-    /// 
+    /// Provides a refreshable instance of a client
     /// </summary>
     /// <remarks></remarks>
     /// <typeparam name="TClient"></typeparam>

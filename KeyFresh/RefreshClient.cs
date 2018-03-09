@@ -5,11 +5,20 @@ using System.Threading.Tasks;
 
 namespace KeyFresh
 {
+    /// <summary>
+    /// Wraps a client with a RefreshPolicy
+    /// </summary>
+    /// <typeparam name="TClient">Client type to wrap</typeparam>
     public abstract class RefreshClient<TClient>
     {
         protected IClientProvider<TClient> ClientProvider;
         protected RefreshPolicy RefreshHandler;
 
+        /// <summary>
+        /// Creates a refreshable client wrapper
+        /// </summary>
+        /// <param name="clientProvider">Provider for a refreshable instance of the client</param>
+        /// <param name="refreshPolicy">Policy for actions to take on request failure</param>
         public RefreshClient(IClientProvider<TClient> clientProvider, RefreshPolicy refreshPolicy)
         {
             Ensure.ArgumentNotNull(clientProvider, nameof(clientProvider));

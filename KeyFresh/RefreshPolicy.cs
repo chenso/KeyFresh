@@ -7,6 +7,9 @@ using Polly.Retry;
 
 namespace KeyFresh
 {
+    /// <summary>
+    /// Refresh policy definition for actions to take on exception before a retry 
+    /// </summary>
     public class RefreshPolicy
     {
         private RetryPolicy _retryPolicy;
