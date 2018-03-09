@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using CodeTiger;
 
 namespace KeyFresh
 {
@@ -21,8 +22,8 @@ namespace KeyFresh
         /// <param name="refreshPolicy">Policy for actions to take on request failure</param>
         public RefreshClient(IClientProvider<TClient> clientProvider, RefreshPolicy refreshPolicy)
         {
-            Ensure.ArgumentNotNull(clientProvider, nameof(clientProvider));
-            Ensure.ArgumentNotNull(refreshPolicy, nameof(refreshPolicy));
+            Guard.ArgumentIsNotNull(nameof(clientProvider), clientProvider);
+            Guard.ArgumentIsNotNull(nameof(refreshPolicy), refreshPolicy);
 
             ClientProvider = clientProvider;
             RefreshHandler = refreshPolicy;

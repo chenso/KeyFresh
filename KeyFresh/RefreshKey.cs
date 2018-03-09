@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Security;
+using CodeTiger;
 
 namespace KeyFresh
 {
@@ -18,8 +19,8 @@ namespace KeyFresh
         /// <param name="keyProvider"></param>
         public RefreshKey(Uri keyUri, IKeyProvider keyProvider)
         {
-            Ensure.ArgumentNotNull(keyUri, nameof(keyUri));
-            Ensure.ArgumentNotNull(keyProvider, nameof(keyProvider));
+            Guard.ArgumentIsNotNull(nameof(keyUri), keyUri);
+            Guard.ArgumentIsNotNull(nameof(keyProvider), keyProvider);
 
             _keyUri = keyUri;
             _keyProvider = keyProvider;
