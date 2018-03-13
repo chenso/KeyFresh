@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
 
-namespace KeyFresh.Azure.Storage
+namespace KeyFresh.Azure.Storage.Clients
 {
     public sealed class CloudTableRefreshClient : RefreshClient<CloudTableClient>
     {

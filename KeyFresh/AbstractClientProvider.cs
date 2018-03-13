@@ -59,10 +59,16 @@ namespace KeyFresh
             else
             {
                 // Wait until lock is released - client has just refreshed, so no-op
-                lock (_refreshLock) { }
+                WaitRefreshLock();
             }
         }
 
         protected abstract TClient GetFreshClient();
+
+        private void WaitRefreshLock()
+        {
+            Monitor.Enter(_refreshLock);
+            Monitor.Exit(_refreshLock);
+        }
     }
 }

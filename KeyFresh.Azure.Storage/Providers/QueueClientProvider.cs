@@ -10,7 +10,8 @@ namespace KeyFresh.Azure.Storage.Providers
 {
     public sealed class QueueClientProvider : AbstractClientProvider<CloudQueueClient>
     {
-        public QueueClientProvider(RefreshKey refreshKey) : base(refreshKey) { }
+        public QueueClientProvider(RefreshKey refreshKey, int refreshIntervalInSeconds = 5) 
+            : base(refreshKey, refreshIntervalInSeconds) { }
 
         protected override CloudQueueClient GetFreshClient()
         {

@@ -37,7 +37,17 @@ namespace KeyFresh
             return RefreshHandler.Excecute(() => lambda(ClientProvider.GetClient()));
         }
 
+        public void Execute(Action<TClient> lambda)
+        {
+            RefreshHandler.Excecute(() => lambda(ClientProvider.GetClient()));
+        }
+
         public Task<TResponse> ExcecuteAsync<TResponse>(Func<TClient, Task<TResponse>> lambda)
+        {
+            return RefreshHandler.ExcecuteAsync(() => lambda(ClientProvider.GetClient()));
+        }
+
+        public Task ExecuteAsync(Func<TClient, Task> lambda)
         {
             return RefreshHandler.ExcecuteAsync(() => lambda(ClientProvider.GetClient()));
         }

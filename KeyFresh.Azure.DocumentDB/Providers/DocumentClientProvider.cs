@@ -10,7 +10,8 @@ namespace KeyFresh.Azure.DocumentDB.Providers
     {
         private readonly Uri _serviceEndpoint;
 
-        public DocumentClientProvider(Uri serviceEndpoint, RefreshKey refreshKey) : base(refreshKey)
+        public DocumentClientProvider(Uri serviceEndpoint, RefreshKey refreshKey, int refershIntervalSeconds = 5) 
+            : base(refreshKey, refershIntervalSeconds)
         {
             Guard.ArgumentIsNotNull(nameof(serviceEndpoint), serviceEndpoint);
 

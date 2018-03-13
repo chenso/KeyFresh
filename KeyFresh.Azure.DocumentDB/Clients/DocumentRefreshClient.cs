@@ -9,7 +9,7 @@ namespace KeyFresh.Azure.DocumentDB
     {
         public DocumentRefreshClient(IClientProvider<DocumentClient> clientProvider) 
             : base(clientProvider, RefreshPolicy.HandleException<DocumentClientException>(
-                x => x.StatusCode == HttpStatusCode.Forbidden, clientProvider.RefreshClient))
+                x => x.StatusCode == HttpStatusCode.Unauthorized, clientProvider.RefreshClient))
         {
 
         }

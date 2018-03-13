@@ -10,7 +10,8 @@ namespace KeyFresh.Azure.Storage.Providers
 {
     public sealed class BlobClientProvider : AbstractClientProvider<CloudBlobClient>
     {
-        public BlobClientProvider(RefreshKey refreshKey) : base(refreshKey) { }
+        public BlobClientProvider(RefreshKey refreshKey, int refreshIntervalInSeconds) 
+            : base(refreshKey, refreshIntervalInSeconds) { }
 
         protected override CloudBlobClient GetFreshClient()
         {

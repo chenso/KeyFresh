@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<RunSettings>  
+  <!-- Parameters used by tests at runtime -->  
+  <TestRunParameters>  
+    <Parameter name="StorageCsWrong" value="" />  
+    <Parameter name="StorageCsRight" value="" />  
+    <Parameter name="DocumentDbUri" value="" />  
+    <Parameter name="DocumentDbKeyWrong" value="" /> 
+    <Parameter name="DocumentDbKeyRight" value="" /> 
+  </TestRunParameters>  
+</RunSettings>  

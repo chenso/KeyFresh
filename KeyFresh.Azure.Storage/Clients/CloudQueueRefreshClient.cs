@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Queue;
 
-namespace KeyFresh.Azure.Storage
+namespace KeyFresh.Azure.Storage.Clients
 {
     public sealed class CloudQueueRefreshClient : RefreshClient<CloudQueueClient>
     {

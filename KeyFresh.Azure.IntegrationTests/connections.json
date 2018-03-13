@@ -1,0 +1,17 @@
+﻿{
+  "StorageData":  
+  [
+    [
+      "wrong-storage-account-connection-string", 
+      "right-storage-account-connection-string"
+    ]
+  ],
+  "DocumentClientData": 
+  [
+    [
+      "https://your-cosmos.documents.azure.com:443/",
+      "wrong-key", 
+      "right-key"
+    ]
+  ]
+}
