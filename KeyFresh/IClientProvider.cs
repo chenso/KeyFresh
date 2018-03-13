@@ -11,6 +11,7 @@ namespace KeyFresh
     /// <remarks>Implementations must be thread-safe</remarks>
     /// <typeparam name="TClient"></typeparam>
     public interface IClientProvider<TClient>
+        where TClient : class
     {
         /// <summary>
         /// Gets current instance of client.
@@ -22,11 +23,5 @@ namespace KeyFresh
         /// Refreshes to a new instance of the client
         /// </summary>
         void RefreshClient();
-
-        /// <summary>
-        /// Refreshes to a new instance of the client
-        /// </summary>
-        /// <returns></returns>
-        Task RefreshClientAsync();
     }
 }

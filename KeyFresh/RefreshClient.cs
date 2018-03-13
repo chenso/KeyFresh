@@ -10,10 +10,12 @@ namespace KeyFresh
     /// Wraps a client with a RefreshPolicy
     /// </summary>
     /// <typeparam name="TClient">Client type to wrap</typeparam>
-    public abstract class RefreshClient<TClient>
+    public abstract class RefreshClient<TClient> where TClient : class
     {
         protected readonly IClientProvider<TClient> ClientProvider;
         protected readonly RefreshPolicy RefreshHandler;
+
+        protected volatile TClient Client;
 
         /// <summary>
         /// Creates a refreshable client wrapper
@@ -27,6 +29,7 @@ namespace KeyFresh
 
             ClientProvider = clientProvider;
             RefreshHandler = refreshPolicy;
+            Client = clientProvider.GetClient();
         }
 
         public TResponse Excecute<TResponse>(Func<TClient, TResponse> lambda)

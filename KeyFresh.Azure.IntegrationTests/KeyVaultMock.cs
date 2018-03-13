@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Security;
 using System.Text;
 
-namespace KeyFresh.UnitTests
+namespace KeyFresh.Azure.IntegrationTests
 {
     public class KeyVaultMock : IKeyProvider
     {

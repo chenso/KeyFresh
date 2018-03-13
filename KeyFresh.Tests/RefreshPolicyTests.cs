@@ -8,42 +8,42 @@ namespace KeyFresh.UnitTests
 {
     public class RefreshPolicyTests
     {
-        const string message = "message";
+        private const string Message = "message";
 
         private class Switch {
-            bool on = false;
+            private bool _on = false;
 
             public bool ThrowIfNotOn()
             {
-                if (!on)
+                if (!_on)
                 {
-                    throw new Exception(message);
+                    throw new Exception(Message);
                 }
                 return true;
             }
 
             public void ThrowIfNotOnVoid()
             {
-                if (!on)
+                if (!_on)
                 {
-                    throw new Exception(message);
+                    throw new Exception(Message);
                 }
             }
 
             public Task<bool> ThrowIfNotOnAsync()
             {
-                if (!on)
+                if (!_on)
                 {
-                    throw new Exception(message);
+                    throw new Exception(Message);
                 }
                 return Task.FromResult(true);
             }
 
             public bool ThrowArgumentNullIfNotOn()
             {
-                if (!on)
+                if (!_on)
                 {
-                    throw new ArgumentNullException(message);
+                    throw new ArgumentNullException(Message);
                 }
                 return true;
             }
@@ -51,30 +51,30 @@ namespace KeyFresh.UnitTests
 
             public Task<bool> ThrowArgumentNullIfNotOnAsync()
             {
-                if (!on)
+                if (!_on)
                 {
-                    throw new ArgumentNullException(message);
+                    throw new ArgumentNullException(Message);
                 }
                 return Task.FromResult(true);
             }
 
             public Task ThrowArgumentExceptionIfNotOnAsync()
             {
-                if (!on)
+                if (!_on)
                 {
-                    throw new ArgumentException(message);
+                    throw new ArgumentException(Message);
                 }
                 return Task.CompletedTask;
             }
 
             public void SwitchOn()
             {
-                on = true;
+                _on = true;
             }
 
             public Task SwitchOnAsync()
             {
-                on = true;
+                _on = true;
                 return Task.CompletedTask;
             }
         }
@@ -83,8 +83,8 @@ namespace KeyFresh.UnitTests
         public void RefreshPolicy_HandleException_SynchronousFunc_RetrySuccess()
         {
             var swt = new Switch();
-            RefreshPolicy policy = RefreshPolicy.HandleException<Exception>(x => x.Message == message, swt.SwitchOn);
-            var success = policy.Excecute(swt.ThrowIfNotOn);
+            RefreshPolicy policy = RefreshPolicy.HandleException<Exception>(x => x.Message == Message, swt.SwitchOn);
+            bool success = policy.Excecute(swt.ThrowIfNotOn);
             Assert.True(success);
         }
 
@@ -93,7 +93,7 @@ namespace KeyFresh.UnitTests
         {
             var swt = new Switch();
             RefreshPolicy policy = RefreshPolicy.HandleExceptionAsync<Exception>(swt.SwitchOnAsync);
-            var success = policy.Excecute(swt.ThrowIfNotOn);
+            bool success = policy.Excecute(swt.ThrowIfNotOn);
             Assert.True(success);
         }
 
@@ -110,7 +110,7 @@ namespace KeyFresh.UnitTests
         {
             var swt = new Switch();
             RefreshPolicy policy = RefreshPolicy.HandleException<Exception>(swt.SwitchOn);
-            var success = await policy.ExcecuteAsync(swt.ThrowIfNotOnAsync).ConfigureAwait(false);
+            bool success = await policy.ExcecuteAsync(swt.ThrowIfNotOnAsync).ConfigureAwait(false);
             Assert.True(success);
         }
 
@@ -118,8 +118,8 @@ namespace KeyFresh.UnitTests
         public async void RefreshPolicy_AsyncHandleExceptionWithPredicate_AsynchronousFunc_RetrySuccess()
         {
             var swt = new Switch();
-            RefreshPolicy policy = RefreshPolicy.HandleExceptionAsync<Exception>(x => x.Message == message, swt.SwitchOnAsync);
-            var success = await policy.ExcecuteAsync(swt.ThrowIfNotOnAsync).ConfigureAwait(false);
+            RefreshPolicy policy = RefreshPolicy.HandleExceptionAsync<Exception>(x => x.Message == Message, swt.SwitchOnAsync);
+            bool success = await policy.ExcecuteAsync(swt.ThrowIfNotOnAsync).ConfigureAwait(false);
             Assert.True(success);
         }
 
@@ -127,7 +127,7 @@ namespace KeyFresh.UnitTests
         public async void RefreshPolicy_AsyncHandleExceptionWithPredicate_AsynchronousAction_RetrySuccess()
         {
             var swt = new Switch();
-            RefreshPolicy policy = RefreshPolicy.HandleExceptionAsync<Exception>(x => x.Message == message, swt.SwitchOnAsync);
+            RefreshPolicy policy = RefreshPolicy.HandleExceptionAsync<Exception>(x => x.Message == Message, swt.SwitchOnAsync);
             await policy.ExcecuteAsync(swt.ThrowArgumentExceptionIfNotOnAsync).ConfigureAwait(false);
         }
 

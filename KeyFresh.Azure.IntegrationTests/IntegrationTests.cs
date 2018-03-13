@@ -1,15 +1,15 @@
 using System;
 using Xunit;
 using KeyFresh;
-using Microsoft.WindowsAzure.Storage.Blob;
+//using Microsoft.WindowsAzure.Storage.Blob;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
-namespace KeyFresh.UnitTests
+namespace KeyFresh.Azure.IntegrationTests
 {
     public class IntegrationTests
     {
-        [Fact(Skip = "Implement KeyVaultMock with own credentials")]
+        /*[Fact(Skip = "Implement KeyVaultMock with own credentials")]
         public async void RefreshClient_ExecuteAsync_Retry_Success()
         {
             var refreshKey = new RefreshKey(new Uri("https://google.com"), new KeyVaultMock());
@@ -22,6 +22,6 @@ namespace KeyFresh.UnitTests
             }
 
             var results = await Task.WhenAll(tasks).ConfigureAwait(false);
-        }
+        }*/
     }
 }

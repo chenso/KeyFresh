@@ -7,6 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyFresh", "KeyFresh\KeyFre
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyFresh.Tests", "KeyFresh.Tests\KeyFresh.Tests.csproj", "{0157E488-2A88-45F1-B073-5E707FC535BD}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyFresh.Azure.Storage", "KeyFresh.Azure.Storage\KeyFresh.Azure.Storage.csproj", "{911237C4-399D-42AC-A040-97DE453A4D03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyFresh.Azure.IntegrationTests", "KeyFresh.Azure.IntegrationTests\KeyFresh.Azure.IntegrationTests.csproj", "{1F6ED943-8F64-406C-A445-6C04EF002080}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyFresh.Azure.DocumentDB", "KeyFresh.Azure.DocumentDB\KeyFresh.Azure.DocumentDB.csproj", "{93156105-FDB2-46B7-85FB-41D7A08A6DFD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +27,18 @@ Global
 		{0157E488-2A88-45F1-B073-5E707FC535BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0157E488-2A88-45F1-B073-5E707FC535BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0157E488-2A88-45F1-B073-5E707FC535BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{911237C4-399D-42AC-A040-97DE453A4D03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{911237C4-399D-42AC-A040-97DE453A4D03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{911237C4-399D-42AC-A040-97DE453A4D03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{911237C4-399D-42AC-A040-97DE453A4D03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F6ED943-8F64-406C-A445-6C04EF002080}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F6ED943-8F64-406C-A445-6C04EF002080}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F6ED943-8F64-406C-A445-6C04EF002080}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F6ED943-8F64-406C-A445-6C04EF002080}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93156105-FDB2-46B7-85FB-41D7A08A6DFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93156105-FDB2-46B7-85FB-41D7A08A6DFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93156105-FDB2-46B7-85FB-41D7A08A6DFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93156105-FDB2-46B7-85FB-41D7A08A6DFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
