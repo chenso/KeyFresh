@@ -5,7 +5,7 @@ using CodeTiger;
 namespace KeyFresh
 {
     /// <summary>
-    /// 
+    /// Holds key uri and key provider
     /// </summary>
     public class RefreshKey
     {
@@ -13,7 +13,7 @@ namespace KeyFresh
         private readonly IKeyProvider _keyProvider;
 
         /// <summary>
-        /// 
+        /// Initialized new instance of RefreshKey
         /// </summary>
         /// <param name="keyUri"></param>
         /// <param name="keyProvider"></param>
@@ -27,15 +27,19 @@ namespace KeyFresh
         }
 
         /// <summary>
-        /// Gets SecureString key at key's uri
+        /// Retrieves SecureString key at keyUri
         /// </summary>
         /// <returns>SecureString Key</returns>
-        public SecureString GetSecureKey()
+        public SecureString RetrieveSecureKey()
         {
             return _keyProvider.GetSecureKey(_keyUri);
         }
 
-        public string GetKey()
+        /// <summary>
+        /// Retrieves plain string key found at keyUri
+        /// </summary>
+        /// <returns></returns>
+        public string RetrieveKey()
         {
             return _keyProvider.GetKey(_keyUri);
         }

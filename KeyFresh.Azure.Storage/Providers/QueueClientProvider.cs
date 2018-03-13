@@ -15,7 +15,7 @@ namespace KeyFresh.Azure.Storage.Providers
 
         protected override CloudQueueClient GetFreshClient()
         {
-            var cs = CloudStorageAccount.Parse(RefreshKey.GetKey());
+            var cs = CloudStorageAccount.Parse(RefreshKey.RetrieveKey());
             return cs.CreateCloudQueueClient();
         }
     }

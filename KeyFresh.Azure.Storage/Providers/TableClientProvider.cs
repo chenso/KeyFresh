@@ -15,7 +15,7 @@ namespace KeyFresh.Azure.Storage.Providers
 
         protected override CloudTableClient GetFreshClient()
         {
-            var cs = CloudStorageAccount.Parse(RefreshKey.GetKey());
+            var cs = CloudStorageAccount.Parse(RefreshKey.RetrieveKey());
             return cs.CreateCloudTableClient();
         }
     }

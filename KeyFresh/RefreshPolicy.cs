@@ -38,7 +38,7 @@ namespace KeyFresh
 
         public static RefreshPolicy HandleException<TException>(Func<TException, bool> exceptionPredicate, Action onException) where TException : Exception
         {
-            return HandleException(exceptionPredicate, onException, async () => { onException.Invoke(); await Task.FromResult(0); });
+            return HandleException(exceptionPredicate, onException, () => { onException.Invoke(); return Task.CompletedTask; });
         }
 
         public static RefreshPolicy HandleExceptionAsync<TException>(Func<TException, bool> exceptionPredicate, Func<Task> onExceptionAsync) where TException : Exception

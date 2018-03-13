@@ -18,7 +18,7 @@ namespace KeyFresh
         protected volatile TClient Client;
 
         /// <summary>
-        /// Creates a refreshable client wrapper
+        /// Creates new instance of <see cref="RefreshClient{TClient}"/>
         /// </summary>
         /// <param name="clientProvider">Provider for a refreshable instance of the client</param>
         /// <param name="refreshPolicy">Policy for actions to take on request failure</param>

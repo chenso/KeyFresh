@@ -2,7 +2,6 @@ using System;
 using Xunit;
 using KeyFresh.Azure.DocumentDB.Providers;
 using KeyFresh.Azure.DocumentDB;
-using Microsoft.Azure.Documents.Client;
 using Microsoft.Azure.Documents;
 
 namespace KeyFresh.Azure.IntegrationTests

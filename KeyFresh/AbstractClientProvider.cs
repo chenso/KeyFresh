@@ -21,6 +21,11 @@ namespace KeyFresh
         private readonly int _refreshIntervalSeconds;
         private DateTimeOffset _disableRefreshUntil = DateTimeOffset.MinValue;
 
+        /// <summary>
+        /// Initializes new instance of <see cref="AbstractClientProvider{TClient}"/>
+        /// </summary>
+        /// <param name="refreshKey"></param>
+        /// <param name="refreshIntervalSeconds"></param>
         protected AbstractClientProvider(RefreshKey refreshKey, int refreshIntervalSeconds = 5)
         {
             Guard.ArgumentIsNotNull(nameof(refreshKey), refreshKey);
