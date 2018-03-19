@@ -29,7 +29,7 @@ namespace KeyFresh
             RefreshHandler = refreshPolicy;
         }
 
-        public TResponse Excecute<TResponse>(Func<TClient, TResponse> lambda)
+        public TResponse Execute<TResponse>(Func<TClient, TResponse> lambda)
         {
             return RefreshHandler.Excecute(() => lambda(ClientProvider.GetClient()));
         }
@@ -39,7 +39,7 @@ namespace KeyFresh
             RefreshHandler.Excecute(() => lambda(ClientProvider.GetClient()));
         }
 
-        public Task<TResponse> ExcecuteAsync<TResponse>(Func<TClient, Task<TResponse>> lambda)
+        public Task<TResponse> ExecuteAsync<TResponse>(Func<TClient, Task<TResponse>> lambda)
         {
             return RefreshHandler.ExcecuteAsync(() => lambda(ClientProvider.GetClient()));
         }

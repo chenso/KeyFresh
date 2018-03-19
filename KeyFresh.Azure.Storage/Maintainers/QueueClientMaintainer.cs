@@ -8,9 +8,9 @@ using Microsoft.WindowsAzure.Storage.Queue;
 
 namespace KeyFresh.Azure.Storage.Maintainers
 {
-    public sealed class QueueClientProvider : AbstractClientMaintainer<CloudQueueClient>
+    public sealed class QueueClientMaintainer : AbstractClientMaintainer<CloudQueueClient>
     {
-        public QueueClientProvider(RefreshKey refreshKey, int refreshIntervalInSeconds = 5) 
+        public QueueClientMaintainer(RefreshKey refreshKey, int refreshIntervalInSeconds = 5) 
             : base(refreshKey, refreshIntervalInSeconds) { }
 
         protected override CloudQueueClient GetFreshClient()

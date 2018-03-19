@@ -8,9 +8,9 @@ using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace KeyFresh.Azure.Storage.Maintainers
 {
-    public sealed class BlobClientProvider : AbstractClientMaintainer<CloudBlobClient>
+    public sealed class BlobClientMaintainer : AbstractClientMaintainer<CloudBlobClient>
     {
-        public BlobClientProvider(RefreshKey refreshKey, int refreshIntervalInSeconds) 
+        public BlobClientMaintainer(RefreshKey refreshKey, int refreshIntervalInSeconds) 
             : base(refreshKey, refreshIntervalInSeconds) { }
 
         protected override CloudBlobClient GetFreshClient()
