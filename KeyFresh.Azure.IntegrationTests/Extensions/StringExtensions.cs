@@ -4,26 +4,10 @@ using System.Linq;
 using System.Security;
 using System.Text;
 
-namespace KeyFresh.Azure.IntegrationTests
+namespace KeyFresh.Azure.IntegrationTests.Extensions
 {
-    public static class StringExtensions
+    internal static class StringExtensions
     {
-        public static void GuardNullOrWhitespace(this string str, string name)
-        {
-            if (string.IsNullOrWhiteSpace(str))
-            {
-                throw new ArgumentNullException(name);
-            }
-        }
-
-        public static void GuardNullOrEmpty(this string str, string name)
-        {
-            if (string.IsNullOrEmpty(str))
-            {
-                throw new ArgumentNullException(name);
-            }
-        }
-
         public static SecureString ConvertToSecureString(this string unsecureString)
         {
             var secure = new SecureString();
