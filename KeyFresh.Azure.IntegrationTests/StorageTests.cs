@@ -9,6 +9,7 @@ using KeyFresh.Azure.Storage.Clients;
 using Microsoft.WindowsAzure.Storage.Table;
 using Microsoft.WindowsAzure.Storage.Queue;
 using Microsoft.WindowsAzure.Storage;
+using Moq;
 
 namespace KeyFresh.Azure.IntegrationTests
 {
@@ -105,7 +106,14 @@ namespace KeyFresh.Azure.IntegrationTests
 
         private RefreshKey BuildStorageRefreshKey(string wrongCs, string rightCs)
         {
-            return new RefreshKey(new Uri("https://abc.xyz"), new KeyVaultMock(wrongCs, rightCs));
+            var mockKeyVault = new Mock<IKeyProvider>();
+            mockKeyVault.SetupSequence(x => x.GetKey(It.IsAny<Uri>()))
+                .Returns(wrongCs)
+                .Returns(rightCs);
+            mockKeyVault.SetupSequence(x => x.GetSecureKey(It.IsAny<Uri>()))
+                .Returns(wrongCs.ConvertToSecureString())
+                .Returns(rightCs.ConvertToSecureString());
+            return new RefreshKey(new Uri("https://abc.xyz"), mockKeyVault.Object);
         }
     }
 }
