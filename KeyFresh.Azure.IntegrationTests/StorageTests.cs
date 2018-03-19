@@ -4,7 +4,7 @@ using KeyFresh;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using KeyFresh.Azure.Storage.Providers;
+using KeyFresh.Azure.Storage.Maintainers;
 using KeyFresh.Azure.Storage.Clients;
 using Microsoft.WindowsAzure.Storage.Table;
 using Microsoft.WindowsAzure.Storage.Queue;

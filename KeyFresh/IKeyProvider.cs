@@ -5,21 +5,22 @@ using System.Text;
 
 namespace KeyFresh
 {
+    /// <summary>
+    /// interface for retrieving keys
+    /// </summary>
     public interface IKeyProvider
     {
         /// <summary>
-        /// 
+        /// Gets SecureString key at the given uri
         /// </summary>
         /// <param name="keyUri">vault uri for the key</param>
-        /// <remarks>Implementations should have some sort of backoff to prevent the vault service from being spammed
-        /// on bad keys</remarks>
         /// <returns></returns>
         SecureString GetSecureKey(Uri keyUri);
 
         /// <summary>
-        /// 
+        /// Gets key at the given uri
         /// </summary>
-        /// <param name="keyUri"></param>
+        /// <param name="keyUri">vault uri for the key</param>
         /// <returns></returns>
         string GetKey(Uri keyUri);
     }

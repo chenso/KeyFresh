@@ -7,9 +7,9 @@ using Microsoft.WindowsAzure.Storage.Queue;
 
 namespace KeyFresh.Azure.Storage.Clients
 {
-    public sealed class CloudQueueRefreshClient : RefreshClient<CloudQueueClient>
+    public sealed class CloudQueueRefreshClient : AbstractRefreshClient<CloudQueueClient>
     {
-        public CloudQueueRefreshClient(IClientProvider<CloudQueueClient> clientProvider) 
+        public CloudQueueRefreshClient(IClientMaintainer<CloudQueueClient> clientProvider) 
             : base(
                   clientProvider, 
                   RefreshPolicy.HandleException<StorageException>(

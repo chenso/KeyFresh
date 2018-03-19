@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 
-namespace KeyFresh.Azure.Storage.Providers
+namespace KeyFresh.Azure.Storage.Maintainers
 {
-    public sealed class BlobClientProvider : AbstractClientProvider<CloudBlobClient>
+    public sealed class BlobClientProvider : AbstractClientMaintainer<CloudBlobClient>
     {
         public BlobClientProvider(RefreshKey refreshKey, int refreshIntervalInSeconds) 
             : base(refreshKey, refreshIntervalInSeconds) { }

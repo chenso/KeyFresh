@@ -7,9 +7,9 @@ using Microsoft.WindowsAzure.Storage.Table;
 
 namespace KeyFresh.Azure.Storage.Clients
 {
-    public sealed class CloudTableRefreshClient : RefreshClient<CloudTableClient>
+    public sealed class CloudTableRefreshClient : AbstractRefreshClient<CloudTableClient>
     {
-        public CloudTableRefreshClient(IClientProvider<CloudTableClient> clientProvider) 
+        public CloudTableRefreshClient(IClientMaintainer<CloudTableClient> clientProvider) 
             : base(
                   clientProvider, 
                   RefreshPolicy.HandleException<StorageException>(

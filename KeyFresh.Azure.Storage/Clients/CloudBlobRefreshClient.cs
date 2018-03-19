@@ -7,9 +7,9 @@ using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace KeyFresh.Azure.Storage.Clients
 {
-    public sealed class CloudBlobRefreshClient : RefreshClient<CloudBlobClient>
+    public sealed class CloudBlobRefreshClient : AbstractRefreshClient<CloudBlobClient>
     {
-        public CloudBlobRefreshClient(IClientProvider<CloudBlobClient> clientProvider) 
+        public CloudBlobRefreshClient(IClientMaintainer<CloudBlobClient> clientProvider) 
             : base(
                   clientProvider, 
                   RefreshPolicy.HandleException<StorageException>(

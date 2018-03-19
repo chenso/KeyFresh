@@ -8,10 +8,10 @@ using CodeTiger;
 namespace KeyFresh
 {
     /// <summary>
-    /// Thread-safe client refresh
+    /// Thread-safe client maintianer
     /// </summary>
     /// <typeparam name="TClient"></typeparam>
-    public abstract class AbstractClientProvider<TClient> : IClientProvider<TClient>
+    public abstract class AbstractClientMaintainer<TClient> : IClientMaintainer<TClient>
         where TClient : class
     {
         protected readonly RefreshKey RefreshKey;
@@ -22,11 +22,11 @@ namespace KeyFresh
         private DateTimeOffset _disableRefreshUntil = DateTimeOffset.MinValue;
 
         /// <summary>
-        /// Initializes new instance of <see cref="AbstractClientProvider{TClient}"/>
+        /// Initializes new instance of <see cref="AbstractClientMaintainer{TClient}"/>
         /// </summary>
         /// <param name="refreshKey"></param>
         /// <param name="refreshIntervalSeconds"></param>
-        protected AbstractClientProvider(RefreshKey refreshKey, int refreshIntervalSeconds = 5)
+        protected AbstractClientMaintainer(RefreshKey refreshKey, int refreshIntervalSeconds = 1)
         {
             Guard.ArgumentIsNotNull(nameof(refreshKey), refreshKey);
 
@@ -34,6 +34,10 @@ namespace KeyFresh
             _refreshIntervalSeconds = refreshIntervalSeconds;
         }
 
+        /// <summary>
+        /// Gets current instance of the client
+        /// </summary>
+        /// <returns></returns>
         public virtual TClient GetClient()
         {
             if (_client == null)
@@ -44,6 +48,9 @@ namespace KeyFresh
             return _client;
         }
 
+        /// <summary>
+        /// Replaces client with a new instance
+        /// </summary>
         public virtual void RefreshClient()
         {
             if (Monitor.TryEnter(_refreshLock))
@@ -68,6 +75,10 @@ namespace KeyFresh
             }
         }
 
+        /// <summary>
+        /// Gets a new instance of the client
+        /// </summary>
+        /// <returns></returns>
         protected abstract TClient GetFreshClient();
 
         private void WaitRefreshLock()

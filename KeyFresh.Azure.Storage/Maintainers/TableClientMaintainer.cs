@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
 
-namespace KeyFresh.Azure.Storage.Providers
+namespace KeyFresh.Azure.Storage.Maintainers
 {
-    public sealed class TableClientProvider : AbstractClientProvider<CloudTableClient>
+    public sealed class TableClientMaintainer : AbstractClientMaintainer<CloudTableClient>
     {
-        public TableClientProvider(RefreshKey refreshKey, int refreshIntervalInSeconds) 
+        public TableClientMaintainer(RefreshKey refreshKey, int refreshIntervalInSeconds) 
             : base(refreshKey, refreshIntervalInSeconds) { }
 
         protected override CloudTableClient GetFreshClient()

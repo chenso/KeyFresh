@@ -4,19 +4,19 @@ using System.Text;
 using Microsoft.Azure.Documents.Client;
 using CodeTiger;
 
-namespace KeyFresh.Azure.DocumentDB.Providers
+namespace KeyFresh.Azure.DocumentDB.Maintainers
 {
-    public sealed class DocumentClientProvider : AbstractClientProvider<DocumentClient>
+    public sealed class DocumentClientMaintainer : AbstractClientMaintainer<DocumentClient>
     {
         private readonly Uri _serviceEndpoint;
 
         /// <summary>
-        /// Initializes new instance of <see cref="DocumentClientProvider"/>
+        /// Initializes new instance of <see cref="DocumentClientMaintainer"/>
         /// </summary>
         /// <param name="serviceEndpoint"></param>
         /// <param name="refreshKey"></param>
         /// <param name="refershIntervalSeconds"></param>
-        public DocumentClientProvider(Uri serviceEndpoint, RefreshKey refreshKey, int refershIntervalSeconds = 5) 
+        public DocumentClientMaintainer(Uri serviceEndpoint, RefreshKey refreshKey, int refershIntervalSeconds = 5) 
             : base(refreshKey, refershIntervalSeconds)
         {
             Guard.ArgumentIsNotNull(nameof(serviceEndpoint), serviceEndpoint);
